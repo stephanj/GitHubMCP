@@ -41,6 +41,8 @@ The server provides the following GitHub operations:
 
 These operations are exposed as tools for Large Language Models using the Model Context Protocol (MCP), allowing AI systems to safely interact with GitHub through its API.
 
+<img width="931" alt="GitHubExample" src="https://github.com/user-attachments/assets/aa39e8d3-7443-41c7-888f-640680a3a297" />
+
 ## Getting Started
 
 ### Prerequisites
