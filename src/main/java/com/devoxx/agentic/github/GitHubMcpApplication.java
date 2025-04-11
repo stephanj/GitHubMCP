@@ -2,6 +2,7 @@ package com.devoxx.agentic.github;
 
 import com.devoxx.agentic.github.tools.BranchService;
 import com.devoxx.agentic.github.tools.CommitService;
+import com.devoxx.agentic.github.tools.ContentService;
 import com.devoxx.agentic.github.tools.IssueService;
 import com.devoxx.agentic.github.tools.PullRequestService;
 import com.devoxx.agentic.github.tools.RepositoryService;
@@ -23,9 +24,10 @@ public class GitHubMcpApplication {
                                             PullRequestService pullRequestService,
                                             RepositoryService repositoryService,
                                             BranchService branchService,
-                                            CommitService commitService) {
+                                            CommitService commitService,
+                                            ContentService contentService) {
         return MethodToolCallbackProvider.builder()
-                .toolObjects(issueService, pullRequestService, repositoryService, branchService, commitService)
+                .toolObjects(issueService, pullRequestService, repositoryService, branchService, commitService, contentService)
                 .build();
     }
 }
