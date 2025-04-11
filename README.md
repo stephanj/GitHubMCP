@@ -24,6 +24,21 @@ The server provides the following GitHub operations:
   - Create comments on pull requests
   - Merge pull requests
 
+- **Branch Management**
+  - List branches in a repository
+  - Create new branches
+
+- **Commit Management**
+  - Get detailed information about commits
+  - List commits with filtering options
+  - Search for commits by message
+
+- **Content Management**
+  - Get file contents from repositories
+  - List directory contents
+  - Create or update files
+  - Search for code within repositories
+
 These operations are exposed as tools for Large Language Models using the Model Context Protocol (MCP), allowing AI systems to safely interact with GitHub through its API.
 
 ## Getting Started
@@ -105,7 +120,7 @@ Edit your claude_desktop_config.json file with the following:
      -Dspring.main.web-application-type=none
      -Dlogging.pattern.console=
      -jar
-     /Users/stephan/IdeaProjects/GitHubMCP/target/GitHubMCP-1.0-SNAPSHOT.jar
+     /path/to/GitHubMCP/target/GitHubMCP-1.0-SNAPSHOT.jar
      ```
    - **Environment Variables**:
      ```
@@ -149,13 +164,55 @@ The GitHub service will use your authentication token but query the specified re
 The GitHub MCP server is organized into several service classes, each providing different functionality:
 
 1. **RepositoryService**
-   - List, get, and search for repositories
+   - `listRepositories`: List repositories for the authenticated user
+   - `getRepository`: Get detailed information about a specific repository
+   - `searchRepositories`: Search for repositories matching a query
 
 2. **IssueService**
-   - List, get, create, and search for issues
-   - Add comments to issues
+   - `listIssues`: List issues for a repository with filtering options
+   - `getIssue`: Get detailed information about a specific issue
+   - `createIssue`: Create a new issue in a repository
+   - `addIssueComment`: Add a comment to an issue
+   - `searchIssues`: Search for issues matching a query
 
 3. **PullRequestService**
-   - List and get pull requests
-   - Add comments to pull requests
-   - Merge pull requests
+   - `listPullRequests`: List pull requests for a repository with filtering options
+   - `getPullRequest`: Get detailed information about a specific pull request
+   - `createPullRequestComment`: Add a comment to a pull request
+   - `mergePullRequest`: Merge a pull request with specified merge method
+
+4. **BranchService**
+   - `listBranches`: List branches in a repository with filtering options
+   - `createBranch`: Create a new branch from a specified reference
+
+5. **CommitService**
+   - `getCommitDetails`: Get detailed information about a specific commit
+   - `listCommits`: List commits in a repository with filtering options
+   - `findCommitByMessage`: Search for commits containing specific text in their messages
+
+6. **ContentService**
+   - `getFileContents`: Get the contents of a file in a repository
+   - `listDirectoryContents`: List contents of a directory in a repository
+   - `createOrUpdateFile`: Create or update a file in a repository
+   - `searchCode`: Search for code within repositories
+
+Each service provides methods that can be called by LLM agents through the MCP protocol, allowing them to interact with GitHub in a structured and controlled manner.
+
+## Enterprise GitHub Support
+
+This MCP server supports both GitHub.com and GitHub Enterprise instances. To use with GitHub Enterprise, set the `GITHUB_HOST` environment variable to your enterprise GitHub URL.
+
+## Limitations
+
+- The server requires a valid GitHub personal access token with appropriate permissions
+- Rate limiting is subject to GitHub API limits
+- Some operations may require specific permissions on the token
+- Large repositories or files may encounter performance limitations
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
