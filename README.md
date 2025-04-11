@@ -41,7 +41,12 @@ The server provides the following GitHub operations:
 
 These operations are exposed as tools for Large Language Models using the Model Context Protocol (MCP), allowing AI systems to safely interact with GitHub through its API.
 
+### Claude Desktop
 <img width="931" alt="GitHubExample" src="https://github.com/user-attachments/assets/aa39e8d3-7443-41c7-888f-640680a3a297" />
+
+### DevoxxGenie IDEA plugin
+<img width="894" alt="Screenshot 2025-04-11 at 12 32 58" src="https://github.com/user-attachments/assets/06a66881-0ca6-494e-814d-cafe97e870cc" />
+
 
 ## Getting Started
 
